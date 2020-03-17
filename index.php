@@ -6,13 +6,22 @@ $user_name = 'Vladislav'; // укажите здесь ваше имя
 $categori_mass = array("Доски и лыжи", "Крепления", "Ботинки", "Одежда",
 "Инструменты", "Разное");
 
-$item_massive = array(
+/*$item_massive = array(
     "2014 Rossignol District Snowboard" => array("Доски и лыжи", 10999, "img/lot-1.jpg"), 
     "DC Ply Mens 2016/2017 Snowboard" => array("Доски и лыжи", 159999, "img/lot-2.jpg"),
     "Крепления Union Contact Pro 2015 года размер L/XL" => array("Крепления", 8000, "img/lot-3.jpg"),
     "Ботинки для сноуборда DC Mutiny Charocal" => array("Ботинки", 10999, "img/lot-4.jpg"),
     "Куртка для сноуборда DC Mutiny Charocal" => array( "Одежда",7500,"img/lot-5.jpg"),
     "Маска Oakley Canopy" => array("Разное", 5400, "img/lot-6.jpg")
+);*/
+
+$items_massive = array(
+    array("LotName" => "2014 Rossignol District Snowboard", "LotCategori" => "Доски и лыжи", "LoTPrice" => 10999, "LotImage" => "img/lot-1.jpg"), 
+    array("LotName" => "DC Ply Mens 2016/2017 Snowboard", "LotCategori" => "Доски и лыжи", "LoTPrice" => 159999, "LotImage" => "img/lot-2.jpg"),
+    array("LotName" => "Крепления Union Contact Pro 2015 года размер L/XL", "LotCategori" => "Крепления", "LoTPrice" => 8000, "LotImage" => "img/lot-3.jpg"),
+    array("LotName" => "Ботинки для сноуборда DC Mutiny Charocal", "LotCategori" =>  "Ботинки", "LoTPrice" => 10999, "LotImage" => "img/lot-4.jpg"),
+    array("LotName" => "Куртка для сноуборда DC Mutiny Charocal", "LotCategori" =>   "Одежда", "LoTPrice" => 7500, "LotImage" => "img/lot-5.jpg"),
+    array("LotName" => "Маска Oakley Canopy", "LotCategori" =>"Разное", "LoTPrice" => 5400, "LotImage" => "img/lot-6.jpg")
 );
 ?>
 
@@ -50,7 +59,7 @@ $item_massive = array(
                  <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
                  </div>
                 <div class="user-menu__logged">
-                <p><?php echo"$user_name" ?></p>
+                <p><?= $user_name ?></p>
             </div>
             <?php
             }
@@ -85,7 +94,7 @@ $item_massive = array(
             {
             ?>
             <li class="promo__item promo__item--boards">
-                <a a class="promo__link" href="pages/all-lots.html"><?php echo "$cathegori"?></a>
+                <a a class="promo__link" href="pages/all-lots.html"><?= $cathegori ?></a>
             </li>
             <?php
             }
@@ -99,20 +108,20 @@ $item_massive = array(
         <ul class="lots__list">
             <!--заполните этот список из массива с товарами-->
             <?php
-            foreach($item_massive as $name => $information)
+            foreach($items_massive as $lot_info)
             {
             ?>
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?php echo "$information[2]" ?>" width="350" height="260" alt="">
+                    <img src="<?= $lot_info["LotImage"]?>" width="350" height="260" alt="">
                 </div>
                 <div class="lot__info">
-                    <span class="lot__category"><?php echo "$information[0]" ?></span>
-                    <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?php $name?></a></h3>
+                    <span class="lot__category"><?= $lot_info["LotCategori"] ?></span>
+                    <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?= $lot_info["LotName"] ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?php echo "$information[1]" ?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?= $lot_info["LoTPrice"] ?><b class="rub">р</b></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
@@ -137,7 +146,7 @@ $item_massive = array(
             {
             ?>
             <li class="nav__item">
-                <a href="pages/all-lots.html"><?php echo "$cathegori"?></a>
+                <a href="pages/all-lots.html"><?= $cathegori?></a>
             </li>
             <?php
             }
