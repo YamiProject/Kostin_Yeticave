@@ -2,6 +2,18 @@
 $is_auth = rand(0, 1);
 
 $user_name = 'Vladislav'; // укажите здесь ваше имя
+
+$categori_mass = array("Доски и лыжи", "Крепления", "Ботинки", "Одежда",
+"Инструменты", "Разное");
+
+$item_massive = array(
+    "2014 Rossignol District Snowboard" => array("Доски и лыжи", 10999, "img/lot-1.jpg"), 
+    "DC Ply Mens 2016/2017 Snowboard" => array("Доски и лыжи", 159999, "img/lot-2.jpg"),
+    "Крепления Union Contact Pro 2015 года размер L/XL" => array("Крепления", 8000, "img/lot-3.jpg"),
+    "Ботинки для сноуборда DC Mutiny Charocal" => array("Ботинки", 10999, "img/lot-4.jpg"),
+    "Куртка для сноуборда DC Mutiny Charocal" => array( "Одежда",7500,"img/lot-5.jpg"),
+    "Маска Oakley Canopy" => array("Разное", 5400, "img/lot-6.jpg")
+);
 ?>
 
 <!DOCTYPE html>
@@ -68,9 +80,16 @@ $user_name = 'Vladislav'; // укажите здесь ваше имя
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
             <!--заполните этот список из массива категорий-->
+            <?php
+            foreach($categori_mass as $cathegori)
+            {
+            ?>
             <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="pages/all-lots.html">Имя категории</a>
+                <a a class="promo__link" href="pages/all-lots.html"><?php echo "$cathegori"?></a>
             </li>
+            <?php
+            }
+            ?>
         </ul>
     </section>
     <section class="lots">
@@ -79,17 +98,21 @@ $user_name = 'Vladislav'; // укажите здесь ваше имя
         </div>
         <ul class="lots__list">
             <!--заполните этот список из массива с товарами-->
+            <?php
+            foreach($item_massive as $name => $information)
+            {
+            ?>
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="" width="350" height="260" alt="">
+                    <img src="<?php echo "$information[2]" ?>" width="350" height="260" alt="">
                 </div>
                 <div class="lot__info">
-                    <span class="lot__category">Название категории</span>
-                    <h3 class="lot__title"><a class="text-link" href="pages/lot.html">Название товара</a></h3>
+                    <span class="lot__category"><?php echo "$information[0]" ?></span>
+                    <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?php $name?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost">цена<b class="rub">р</b></span>
+                            <span class="lot__cost"><?php echo "$information[1]" ?><b class="rub">р</b></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
@@ -97,6 +120,9 @@ $user_name = 'Vladislav'; // укажите здесь ваше имя
                     </div>
                 </div>
             </li>
+            <?php
+            }
+            ?>
         </ul>
     </section>
 </main>
@@ -106,9 +132,16 @@ $user_name = 'Vladislav'; // укажите здесь ваше имя
     <nav class="nav">
         <ul class="nav__list container">
             <!--заполните этот список из массива категорий-->
+            <?php
+            foreach($categori_mass as $cathegori)
+            {
+            ?>
             <li class="nav__item">
-                <a href="pages/all-lots.html">Название категории</a>
+                <a href="pages/all-lots.html"><?php echo "$cathegori"?></a>
             </li>
+            <?php
+            }
+            ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
