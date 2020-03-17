@@ -3,17 +3,8 @@ $is_auth = rand(0, 1);
 
 $user_name = 'Vladislav'; // укажите здесь ваше имя
 
-$categori_mass = array("Доски и лыжи", "Крепления", "Ботинки", "Одежда",
-"Инструменты", "Разное");
-
-/*$item_massive = array(
-    "2014 Rossignol District Snowboard" => array("Доски и лыжи", 10999, "img/lot-1.jpg"), 
-    "DC Ply Mens 2016/2017 Snowboard" => array("Доски и лыжи", 159999, "img/lot-2.jpg"),
-    "Крепления Union Contact Pro 2015 года размер L/XL" => array("Крепления", 8000, "img/lot-3.jpg"),
-    "Ботинки для сноуборда DC Mutiny Charocal" => array("Ботинки", 10999, "img/lot-4.jpg"),
-    "Куртка для сноуборда DC Mutiny Charocal" => array( "Одежда",7500,"img/lot-5.jpg"),
-    "Маска Oakley Canopy" => array("Разное", 5400, "img/lot-6.jpg")
-);*/
+$categori_mass = array("boards"=>"Доски и лыжи", "attachment"=>"Крепления", "boots"=>"Ботинки", 
+"clothing"=>"Одежда", "tools"=>"Инструменты", "other"=>"Разное");
 
 $items_massive = array(
     array("LotName" => "2014 Rossignol District Snowboard", "LotCategori" => "Доски и лыжи", "LoTPrice" => 10999, "LotImage" => "img/lot-1.jpg"), 
@@ -90,10 +81,10 @@ $items_massive = array(
         <ul class="promo__list">
             <!--заполните этот список из массива категорий-->
             <?php
-            foreach($categori_mass as $cathegori)
+            foreach($categori_mass as $key => $cathegori)
             {
             ?>
-            <li class="promo__item promo__item--boards">
+            <li class="promo__item promo__item--<?=$key?>">
                 <a a class="promo__link" href="pages/all-lots.html"><?= $cathegori ?></a>
             </li>
             <?php
