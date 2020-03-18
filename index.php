@@ -14,6 +14,22 @@ $items_massive = array(
     array("LotName" => "Куртка для сноуборда DC Mutiny Charocal", "LotCategori" =>   "Одежда", "LoTPrice" => 7500, "LotImage" => "img/lot-5.jpg"),
     array("LotName" => "Маска Oakley Canopy", "LotCategori" =>"Разное", "LoTPrice" => 5400, "LotImage" => "img/lot-6.jpg")
 );
+
+function num_formation($number)
+{
+    $ruble_mark = true; 
+
+    $number = ceil($number);
+    if($number<1000)
+        $first = $number;
+    else
+        $first = number_format($number,0,""," ");
+
+    if($ruble_mark==true)
+        $first.=" ₽";
+        
+        return $first;
+}   
 ?>
 
 <!DOCTYPE html>
@@ -112,7 +128,7 @@ $items_massive = array(
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?= $lot_info["LoTPrice"] ?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?= num_formation($lot_info["LoTPrice"]) ?></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
