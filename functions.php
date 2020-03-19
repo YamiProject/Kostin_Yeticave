@@ -35,10 +35,10 @@ function num_formation($number, $ruble_mark)
 
 function include_template($file_name, $file_data) 
 {
-    $file_name = "C:/OSPanel/domains/yeticave/templates/$file_name";
+    $file_name = "templates/$file_name";
 
     $result = "Error";
-    if (!file_exists($name)) {
+    if (!file_exists($file_name)) {
     return $result;
     }
 

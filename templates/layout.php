@@ -57,7 +57,7 @@
 </header>
 
 <main class="container"> 
-<?=$index_file?>    
+<?=$including_of_index?>    
 </main>
 </div>
 
