@@ -37,9 +37,10 @@ function include_template($file_name, $file_data)
 {
     $file_name = "C:/OSPanel/domains/yeticave/templates/$file_name";
 
-    $result = 'ddsdsd';
-
-    
+    $result = "Error";
+    if (!file_exists($name)) {
+    return $result;
+    }
 
     ob_start();
     extract($file_data);
