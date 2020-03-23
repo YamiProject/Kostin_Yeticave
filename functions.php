@@ -48,4 +48,13 @@ function include_template($file_name, $file_data)
     $result = ob_get_clean();
     return $result;
 }
+
+ 
+date_default_timezone_set('Europe/Moscow');
+$dateNow = strtotime("now");
+$dateTommorow = strtotime("tomorrow");
+$diff = $dateTommorow - $dateNow; 
+$hours = floor($diff/(3600));
+$minutes = floor(($diff-$hours*(3600))/60); 
+
 ?>
