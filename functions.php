@@ -49,7 +49,8 @@ function include_template($file_name, $file_data)
     return $result;
 }
 
- 
+function GetTimeFromFunction()
+{ 
 date_default_timezone_set('Europe/Moscow');
 $dateNow = strtotime("now");
 $dateTommorow = strtotime("tomorrow");
@@ -57,4 +58,11 @@ $diff = $dateTommorow - $dateNow;
 $hours = floor($diff/(3600));
 $minutes = floor(($diff-$hours*(3600))/60); 
 
+if($hours<10)
+$hours = "0".$hours;
+if($minutes<10)
+$minutes = "0".$minutes;
+
+return sprintf("%0s:%0s",$hours,$minutes);
+}
 ?>

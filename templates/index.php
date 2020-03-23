@@ -40,7 +40,7 @@
                             <span class="lot__cost"><?= num_formation($lot_info["LoTPrice"],true) ?></span>
                         </div>
                         <div class="lot__timer timer">
-                            <?= sprintf("%d:%d",$hours,$minutes);?>
+                            <?= GetTimeFromFunction()?>
                         </div>
                     </div>
                 </div>
