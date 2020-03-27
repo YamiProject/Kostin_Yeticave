@@ -2,7 +2,7 @@
 
 -- Создать таблицу для категорий--
 CREATE TABLE categories(
-categ_id int,
+categ_id int AUTO_INCREMENT,
 categ_name varchar(50),
 categ_nick varchar(13),
 CONSTRAINT categ_primary PRIMARY KEY (categ_id,categ_name,categ_nick)
@@ -19,8 +19,8 @@ lot_name varchar(200),
 lot_categ_id int,
 lot_discr text,
 lot_image text,
-lot_cr_date date,
-lot_comp_date date,
+lot_cr_date datetime,
+lot_comp_date datetime,
 lot_start_price int,
 lot_step int
 );
@@ -32,11 +32,11 @@ CREATE INDEX winner_index on lots(lot_winner_id);
 
 -- Создать таблицу пользователя -- 
 CREATE TABLE users(
-user_id int,
+user_id int AUTO_INCREMENT,
 user_name varchar(100),
 user_email varchar(100),
 user_password varchar(50),
-user_singup_date date,
+user_signup_date date,
 user_image text,
 user_contact varchar(18),
 CONSTRAINT user_primary PRIMARY KEY (user_id,user_name,user_email)
@@ -49,7 +49,7 @@ CREATE TABLE rate(
 rate_id int PRIMARY KEY AUTO_INCREMENT,
 lot_id int,
 user_id int,
-rate_date date,
+rate_date datetime,
 rate_price int
 );
 
@@ -62,13 +62,11 @@ CREATE INDEX rate_user_index on rate(user_id);
 
 -- Создание связей для таблица lots --
 ALTER TABLE `lots`
-ADD CONSTRAINT lots_fk1 FOREIGN KEY (lot_id) REFERENCES rate(lot_id);
-ALTER TABLE `lots`
-ADD CONSTRAINT lots_fk2 FOREIGN KEY (lot_user_id) REFERENCES users(user_id);
+ADD CONSTRAINT lots_fk1 FOREIGN KEY (lot_user_id) REFERENCES users(user_id);
 ALTER TABLE `lots` 
-ADD CONSTRAINT lots_fk3 FOREIGN KEY (lot_categ_id) REFERENCES categories(categ_id);
+ADD CONSTRAINT lots_fk2 FOREIGN KEY (lot_categ_id) REFERENCES categories(categ_id);
 ALTER TABLE `lots` 
-ADD CONSTRAINT lots_fk4 FOREIGN KEY (lot_winner_id) REFERENCES users(user_id);
+ADD CONSTRAINT lots_fk3 FOREIGN KEY (lot_winner_id) REFERENCES users(user_id);
 
 -- Создание связей для таблица rate --
 ALTER TABLE `rate` 
