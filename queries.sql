@@ -64,9 +64,9 @@ FROM categories
 ставок, название категории 
 */
 SELECT DISTINCT lot_name, lot_start_price, lot_image, MAX(rate_price) as 'Маскимальная ставка', count(c.rate_id) as 'Количество ставок', categ_name 
-FROM categories a inner join lots b on categ_id=lot_categ_id inner join 
+FROM categories a left join lots b on categ_id=lot_categ_id left join 
 rate c on b.lot_id=c.lot_id
-WHERE CURDATE()<lot_comp_date
+WHERE "2020-03-27 10:23:34"<lot_comp_date
 group by lot_name
 ORDER BY  lot_cr_date DESC
 
